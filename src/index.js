@@ -1,15 +1,16 @@
 import "./styles.css";
 
 import { from } from "rxjs";
-import { map, filter } from "rxjs/operators";
+import { map, filter, delay } from "rxjs/operators";
 
 let numberObservable = from([1, 2, 3, 4, 5]);
 let squareNumbers = numberObservable.pipe(
   filter((val) => val > 2),
-  map((val) => val * val)
+  map((val) => val * val),
+  delay(0)
 );
 
-console.log(squareNumbers);
+// console.log(squareNumbers);
 let subscription = squareNumbers.subscribe((result) => {
   console.log(result);
   // subscription.unsubscribe();
